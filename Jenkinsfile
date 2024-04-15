@@ -30,4 +30,41 @@ pipeline {
                  }
               }
            }
+
+        stage('Test image') {
+           agent any
+           steps {
+              script {
+                sh '''
+                    curl 172.17.0.1 | grep -i "Dimension"
+                '''
+              }
+           }
+      }
+      stage('Clean Container') {
+          agent any
+          steps {
+             script {
+               sh '''
+                 docker stop $IMAGE_NAME
+                 docker rm $IMAGE_NAME
+               '''
+             }
+          }
+     }
+
+     stage ('Login and Push Image on docker hub') {
+          agent any
+        environment {
+           DOCKERHUB_PASSWORD  = credentials('dockerhub_id')
+        }            
+          steps {
+             script {
+               sh '''
+                   echo $DOCKERHUB_PASSWORD_PSW | docker login -u DOCKERHUB_ID --password-stdin
+                   docker push $DOCKERHUB_ID/$IMAGE_NAME:$IMAGE_TAG
+               '''
+             }
+          }
+      }    
 }
