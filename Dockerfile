@@ -1,6 +1,6 @@
 #DockerFile Satatic web site
 FROM nginx
-LAbel maintainer= "Sadia ben touirad"
+LABEL maintainer= "Sadia ben touirad"
 RUN apt-get update &&\
     apt-get upgarde -y &&\
     apt-get install git -y
