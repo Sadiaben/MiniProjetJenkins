@@ -1,4 +1,4 @@
-FROM nginx:1.21.1
+FROM nginx
 LABEL maintainer="Sadia ben touirad"
 RUN apt-get update && \
     apt-get upgrade -y && \
