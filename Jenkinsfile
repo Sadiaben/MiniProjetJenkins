@@ -4,7 +4,8 @@ pipeline {
         IMAGE_NAME = "staticwebsite"
         IMAGE_TAG = "latest"
         DOCKERHUB_ID = "sadiabentouirad"
-        
+        STAGING = "website-staging"
+        PRODUCTION = "website-prod"
     
     }
     agent none
@@ -67,5 +68,48 @@ pipeline {
              }
           }
       }    
+     
+
+   stage('Push image in staging and deploy it') {
+       when {
+              expression { GIT_BRANCH == 'origin/master' }
+            }
+      agent any
+      environment {
+          HEROKU_API_KEY = credentials('heroku_api_key')
+      }  
+      steps {
+          script {
+            sh '''
+              npm i -g heroku@7.68.0
+              heroku container:login
+              heroku create $STAGING || echo "project already exist"
+              heroku container:push -a $STAGING web
+              heroku container:release -a $STAGING web
+            '''
+          }
+        }
+     } 
+     stage('Push image in production and deploy it') {
+       when {
+              expression { GIT_BRANCH == 'origin/master' }
+            }
+      agent any
+      environment {
+          HEROKU_API_KEY = credentials('heroku_api_key')
+      }  
+      steps {
+          script {
+            sh '''
+              npm i -g heroku@7.68.0
+              heroku container:login
+              heroku create $PRODUCTION || echo "project already exist"
+              heroku container:push -a $PRODUCTION web
+              heroku container:release -a $PRODUCTION web
+            '''
+          }
+        }
+     }
+  }
 }
 }
