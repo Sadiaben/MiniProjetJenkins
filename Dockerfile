@@ -1,9 +1,9 @@
-# DockerFile Satatic web site
+# DockerFile pour un site web statique
 FROM nginx
 LABEL maintainer="Sadia ben touirad"
-RUN apt-get update &&\
-    apt-get upgrade -y &&\
+RUN apt-get update && \
+    apt-get upgrade -y && \
     apt-get install git -y
-RUN rm -rf /usr/share/nginx/html/* &&\
+RUN rm -rf /usr/share/nginx/html/* && \
     git clone https://github.com/diranetafen/static-website-example.git /usr/share/nginx/html
 CMD nginx -g 'daemon off;'
