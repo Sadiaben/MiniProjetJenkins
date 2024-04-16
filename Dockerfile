@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:alpine
 LABEL maintainer="Sadia ben touirad"
 RUN apt-get update && \
     apt-get upgrade -y && \
