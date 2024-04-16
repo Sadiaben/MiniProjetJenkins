@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:1.24.0-bullseye-perl
 LABEL maintainer="Sadia ben touirad"
 RUN apt-get update && \
     apt-get upgrade -y && \
