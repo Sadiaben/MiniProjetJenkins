@@ -81,8 +81,8 @@ pipeline {
       steps {
           script {
             sh '''
-              npm uninstall -g heroku
               npm install -g heroku
+              npm update -g heroku
               heroku container:login
               heroku create $STAGING || echo "project already exist"
               heroku container:push -a $STAGING web
@@ -102,7 +102,7 @@ pipeline {
       steps {
           script {
             sh '''
-              npm uninstall -g heroku
+              
               npm install -g heroku
               heroku container:login
               heroku create $PRODUCTION || echo "project already exist"
