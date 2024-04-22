@@ -70,7 +70,9 @@ Cette partie contiendra les étapes suivantes :
       Build de l'image : Construction de l'image à partir du code source. // Dockerfile 
       Tests : Exécution des tests  //  curl http://172.17.0.1:80 | grep -q  "Dimension"
       Release : Publication de l'image construite dans un référentiel dockerhub. 
-      
+
+  
+  ![dockerhub](https://github.com/Sadiaben/project2/blob/main/jenkins.png "dockerhub")
 Partie CD Pipeline
 
 Cette partie contiendra les étapes suivantes :
