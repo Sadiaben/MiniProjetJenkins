@@ -72,7 +72,7 @@ Cette partie contiendra les étapes suivantes :
       Release : Publication de l'image construite dans un référentiel dockerhub. 
 
   
-  ![dockerhub](https://github.com/Sadiaben/project2/blob/main/jenkins.png "dockerhub")
+  ![dockerhub](https://github.com/Sadiaben/project2/blob/main/dockerhub.png "dockerhub")
 Partie CD Pipeline
 
 Cette partie contiendra les étapes suivantes :
