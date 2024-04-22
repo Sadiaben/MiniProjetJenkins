@@ -26,7 +26,8 @@ Voici le code de l'application Static web site
         ngrok http http://localhost:8080
       ```
    Vous obtiendrez une adresse Ngrok, par exemple : https://437e-45-80-10-80.ngrok-free.app.
-        Configuration dans GitHub :
+   Configuration dans GitHub :
+   
         Accédez aux paramètres (settings) de votre projet sur GitHub.
         Sélectionnez l'onglet "Webhooks".
         Cliquez sur "Add webhook".
