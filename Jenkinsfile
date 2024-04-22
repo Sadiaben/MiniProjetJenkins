@@ -1,4 +1,5 @@
-
+/* import shared library */
+@Library('shared-library')_
 pipeline {
     environment {
         IMAGE_NAME = "staticwebsite"
@@ -111,6 +112,13 @@ pipeline {
           }
         }
      }
+  }
+  post {
+    always {
+      script {
+        slackNotifier currentBuild.result
+      }
+    }  
   }
 }
 
