@@ -21,7 +21,7 @@ Voici le code de l'application Static web site
 
         https://github.com/diranetafen/static-website-example.git
   
-3. BUILD IMAGE
+2. BUILD IMAGE
    Créer un fichier Dockerfile: 
      ```
     #DockerFile Satatic web site
@@ -36,19 +36,20 @@ Voici le code de l'application Static web site
     COPY nginx.conf /etc/nginx/conf.d/default.conf
     CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
      ```
-4. Pour configurer un webhook GitHub afin de recevoir des notifications des événements de votre dépôt, vous pouvez suivre les étapes ci-dessous :
+ 3. Pour configurer un webhook GitHub afin de recevoir des notifications des événements de votre dépôt, vous pouvez suivre les étapes ci-dessous :
   
- Pour configurer l'intégration entre GitHub et Jenkins, vous pouvez utiliser Ngrok pour créer un tunnel sécurisé vers votre serveur Jenkins local. Ngrok fournit une adresse publique sécurisée à laquelle GitHub peut envoyer des requêtes Webhook, permettant ainsi à Jenkins de réagir aux événements sur GitHub, tels que les pushes de code ou les créations de pull requests." 
+    Pour configurer l'intégration entre GitHub et Jenkins, vous pouvez utiliser Ngrok pour créer un tunnel sécurisé vers votre serveur Jenkins local. Ngrok fournit une adresse publique sécurisée à 
+    laquelle GitHub peut envoyer des requêtes Webhook, permettant ainsi à Jenkins de réagir aux événements sur GitHub, tels que les pushes de code ou les créations de pull requests." 
   
-  Exécutez la commande suivante dans votre terminal :
+    Exécutez la commande suivante dans votre terminal :
       ```
         ngrok http http://localhost:8080
       ```
 
-   Vous obtiendrez une adresse Ngrok, par exemple : https://437e-45-80-10-80.ngrok-free.app.
+     Vous obtiendrez une adresse Ngrok, par exemple : https://437e-45-80-10-80.ngrok-free.app.
 
 
- Configuration dans GitHub :
+     Configuration dans GitHub :
    
         Accédez aux paramètres (settings) de votre projet sur GitHub.
         Sélectionnez l'onglet "Webhooks".
@@ -60,9 +61,9 @@ Voici le code de l'application Static web site
 
 
   
-4.  Configuration des identifiants dans Jenkins pour Heroku API Key et Slack Token
+ 4.  Configuration des identifiants dans Jenkins pour Heroku API Key et Slack Token
 
-Pour configurer les identifiants nécessaires à Jenkins pour l'API Key Heroku et le Token Slack, suivez ces étapes :
+   Pour configurer les identifiants nécessaires à Jenkins pour l'API Key Heroku et le Token Slack, suivez ces étapes :
 
         Accès à Jenkins : Accédez à l'interface Jenkins.
         Accès aux paramètres administratifs :
@@ -77,23 +78,28 @@ Pour configurer les identifiants nécessaires à Jenkins pour l'API Key Heroku e
         Remplissez le champ Secret avec votre API Key Heroku ou votre Token Slack.
         Remplissez le champ ID avec le id de credientials par exemple heroku_api_key.
         Cliquez sur "Ajouter".
+
         
-5. Création d'un fichier Jenkinsfile
-Pour organiser les pipelines dans Jenkins, vous pouvez créer un fichier Jenkinsfile. Voici comment structurer le Jenkinsfile :
+ 5. Création d'un fichier Jenkinsfile
 
-Partie CI Pipeline
-
-Cette partie contiendra les étapes suivantes :
+   
+   Pour organiser les pipelines dans Jenkins, vous pouvez créer un fichier Jenkinsfile. Voici comment structurer le Jenkinsfile :
+   
+   Partie CI Pipeline
+   
+   Cette partie contiendra les étapes suivantes :
 
       Build de l'image : Construction de l'image à partir du code source. // Dockerfile 
       Tests : Exécution des tests  //  curl http://172.17.0.1:80 | grep -q  "Dimension"
       Release : Publication de l'image construite dans un référentiel dockerhub. 
 
   
-  ![dockerhub](https://github.com/Sadiaben/project2/blob/main/dockerhub.png "dockerhub")
-Partie CD Pipeline
+   ![dockerhub](https://github.com/Sadiaben/project2/blob/main/dockerhub.png "dockerhub")
 
-Cette partie contiendra les étapes suivantes :
+   
+  Partie CD Pipeline
+
+  Cette partie contiendra les étapes suivantes :
 
       Staging : Déploiement sur un environnement de staging:   utilisation heroku.
       Production : Déploiement sur l'environnement de production:   utilisation heroku.
