@@ -1,10 +1,26 @@
-# MiniProjetJenkins
+ # Mini Projet Jenkins
 
   ![Mini project](https://github.com/Sadiaben/project2/blob/main/mini_projet_jenkins1.png "Mini project")
+  
+Prénom : Sadia
+
+Nom : Ben touirad
+
+Formation : 18ème Bootcamp DevOps d'Eazytraining
+
+Période : mars-avril-mai
+
+date : 22 avril 2024
+ 
+**Objectives**
+
+L'objectif de ce travail est de mettre en place un pipeline CI/CD pour une application de site web statique en utilisant Jenkins, Docker, GitHub, Heroku 
+
 1. CODE 
-Voici le code de l'application Static web site 
-   https://github.com/diranetafen/static-website-example.git
-   créer un nginx.conf 
+Voici le code de l'application Static web site
+
+        https://github.com/diranetafen/static-website-example.git
+  
 3. BUILD IMAGE
    Créer un fichier Dockerfile: 
      ```
@@ -44,7 +60,7 @@ Voici le code de l'application Static web site
 
 
   
-5.  Configuration des identifiants dans Jenkins pour Heroku API Key et Slack Token
+4.  Configuration des identifiants dans Jenkins pour Heroku API Key et Slack Token
 
 Pour configurer les identifiants nécessaires à Jenkins pour l'API Key Heroku et le Token Slack, suivez ces étapes :
 
@@ -62,7 +78,7 @@ Pour configurer les identifiants nécessaires à Jenkins pour l'API Key Heroku e
         Remplissez le champ ID avec le id de credientials par exemple heroku_api_key.
         Cliquez sur "Ajouter".
         
-6. Création d'un fichier Jenkinsfile
+5. Création d'un fichier Jenkinsfile
 Pour organiser les pipelines dans Jenkins, vous pouvez créer un fichier Jenkinsfile. Voici comment structurer le Jenkinsfile :
 
 Partie CI Pipeline
