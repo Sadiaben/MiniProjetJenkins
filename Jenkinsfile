@@ -4,8 +4,8 @@ pipeline {
         IMAGE_NAME = "staticwebsite"
         IMAGE_TAG = "latest"
         DOCKERHUB_ID = "sadiabentouirad"
-        STAGING = "website-staging"
-        PRODUCTION = "website-prod"
+        STAGING = "sadia-staging"
+        PRODUCTION = "sadia-prod"
     
     }
     agent none
