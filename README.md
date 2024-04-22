@@ -22,7 +22,9 @@ Voici le code de l'application Static web site
      ```
 4. Pour configurer un webhook GitHub afin de recevoir des notifications des événements de votre dépôt, vous pouvez suivre les étapes ci-dessous :
   
-  Utilisation de Ngrok pour une adresse publique :Utilisez Ngrok pour obtenir une adresse publique sécurisée à laquelle GitHub peut envoyer des requêtes. Exécutez la commande suivante dans votre terminal :
+ Pour configurer l'intégration entre GitHub et Jenkins, vous pouvez utiliser Ngrok pour créer un tunnel sécurisé vers votre serveur Jenkins local. Ngrok fournit une adresse publique sécurisée à laquelle GitHub peut envoyer des requêtes Webhook, permettant ainsi à Jenkins de réagir aux événements sur GitHub, tels que les pushes de code ou les créations de pull requests." 
+  
+  Exécutez la commande suivante dans votre terminal :
       ```
         ngrok http http://localhost:8080
       ```
