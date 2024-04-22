@@ -21,11 +21,15 @@ Voici le code de l'application Static web site
     CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
      ```
 4. Pour configurer un webhook GitHub afin de recevoir des notifications des événements de votre dépôt, vous pouvez suivre les étapes ci-dessous :
-        Utilisation de Ngrok pour une adresse publique :Utilisez Ngrok pour obtenir une adresse publique sécurisée à laquelle GitHub peut envoyer des requêtes. Exécutez la commande suivante dans votre terminal :
+  
+  Utilisation de Ngrok pour une adresse publique :Utilisez Ngrok pour obtenir une adresse publique sécurisée à laquelle GitHub peut envoyer des requêtes. Exécutez la commande suivante dans votre terminal :
       ```
         ngrok http http://localhost:8080
       ```
+
    Vous obtiendrez une adresse Ngrok, par exemple : https://437e-45-80-10-80.ngrok-free.app.
+
+
  Configuration dans GitHub :
    
         Accédez aux paramètres (settings) de votre projet sur GitHub.
@@ -36,8 +40,10 @@ Voici le code de l'application Static web site
         Enregistrez vos modifications.
 
 
-5.  créer un fichier Jenkinsfile
-6.  Configuration des identifiants dans Jenkins pour Heroku API Key et Slack Token
+
+  
+5.  Configuration des identifiants dans Jenkins pour Heroku API Key et Slack Token
+
 Pour configurer les identifiants nécessaires à Jenkins pour l'API Key Heroku et le Token Slack, suivez ces étapes :
 
         Accès à Jenkins : Accédez à l'interface Jenkins.
@@ -53,9 +59,25 @@ Pour configurer les identifiants nécessaires à Jenkins pour l'API Key Heroku e
         Remplissez le champ Secret avec votre API Key Heroku ou votre Token Slack.
         Remplissez le champ ID avec le id de credientials par exemple heroku_api_key.
         Cliquez sur "Ajouter".
-8.  configurer les credential dans jenkins pour heroku_api_key et slack token
-     acceder a jenkins -> administrer jenkins -> Security-> credentials -> add credentials 
-   
-   
+        
+6. Création d'un fichier Jenkinsfile
+Pour organiser les pipelines dans Jenkins, vous pouvez créer un fichier Jenkinsfile. Voici comment structurer le Jenkinsfile :
 
+Partie CI Pipeline
 
+Cette partie contiendra les étapes suivantes :
+
+      Build de l'image : Construction de l'image à partir du code source. // Dockerfile 
+      Tests : Exécution des tests  //  curl http://172.17.0.1:80 | grep -q  "Dimension"
+      Release : Publication de l'image construite dans un référentiel dockerhub. 
+      
+Partie CD Pipeline
+
+Cette partie contiendra les étapes suivantes :
+
+      Staging : Déploiement sur un environnement de staging:   utilisation heroku.
+      Production : Déploiement sur l'environnement de production:   utilisation heroku.
+   
+   ![jenkins](https://github.com/Sadiaben/project2/blob/main/jenkins.png "jenkins")
+
+   ![Heroku](https://github.com/Sadiaben/project2/blob/main/heroku.png "Heroku")
